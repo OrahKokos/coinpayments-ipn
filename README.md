@@ -1,11 +1,11 @@
 # Coinpayments-IPN
 
 <p align="left">
-  <a href="https://travis-ci.org/OrahKokos/coinpayments">
-    <img src="https://travis-ci.org/OrahKokos/coinpayments-ipn.svg?branch=master"
+  <a href="https://travis-ci.com/OrahKokos/coinpayments-ipn">
+    <img src="https://travis-ci.com/OrahKokos/coinpayments-ipn.svg?branch=master"
          alt="build status">
   </a>
-  <a href="https://codecov.io/github/OrahKokos/coinpayments">
+  <a href="https://codecov.io/github/OrahKokos/coinpayments-ipn">
     <img src="https://codecov.io/github/OrahKokos/coinpayments-ipn/coverage.svg?branch=master"
          alt="code coverage">
   </a>
@@ -57,6 +57,6 @@ if (isValid) {
 ```
 
 ### Example 
-A simple docker image can be found here.
+A simple docker image can be found [here](https://github.com/OrahKokos/coinpayments-ipn-docker).
 
 
