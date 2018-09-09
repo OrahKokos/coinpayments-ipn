@@ -1,0 +1,32 @@
+{
+  "name": "coinpayments-ipn",
+  "version": "1.0.0",
+  "description": "Coinpayments Instant Payment Notification processor.",
+  "main": "lib/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "codecov": "^3.1.0",
+    "eslint": "^5.5.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "prettier": "^1.14.2"
+  },
+  "scripts": {
+    "test": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/mocha --reporter progress tests/index.js",
+    "lint": "node_modules/eslint/bin/eslint.js lib/; exit 0",
+    "pretty": "node_modules/prettier/bin-prettier.js lib/** --write",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "report-coverage": "codecov",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OrahKokos/coinpayments-ipn.git"
+  },
+  "author": "Marko Paroški",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OrahKokos/coinpayments-ipn/issues"
+  },
+  "homepage": "https://github.com/OrahKokos/coinpayments-ipn#readme"
+}
