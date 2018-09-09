@@ -4,10 +4,12 @@ node_js:
 install:
   - npm install -g codecov
 cache:
+  yarn: true
   directories:
     - node_modules
 script:
-   - npm run lint
-   - npm run test
+   - yarn install
+   - yarn lint
+   - yarn test
 after_script:
-  - npm run report-coverage
+  - yarn report-coverage
