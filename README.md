@@ -31,8 +31,8 @@ npm install coinpayments-ipn
  * @returns {Boolean}
  * @throws {CoinpaymentsIPNError}
  */
-const { verify } = require('coinpaments-ipn');
-const CoinpaymentsIPNError = require('coinpaments-ipn/lib/error');
+const { verify } = require('coinpayments-ipn');
+const CoinpaymentsIPNError = require('coinpayments-ipn/lib/error');
 
 let IsValid, error;
 

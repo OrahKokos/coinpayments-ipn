@@ -1,0 +1,10 @@
+.gitignore
+.travis.yml
+.env
+.env.example
+.eslintignore
+LICENSE
+README.md
+.nyc_output/
+coverage/
+coverage.lcov
