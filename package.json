@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/mocha --reporter progress tests/index.js",
-    "lint": "node_modules/eslint/bin/eslint.js lib/; exit 0",
+    "lint": "node_modules/eslint/bin/eslint.js lib/",
     "pretty": "node_modules/prettier/bin-prettier.js lib/** --write",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
   },
