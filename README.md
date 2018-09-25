@@ -34,7 +34,7 @@ npm install coinpayments-ipn
 const { verify } = require('coinpayments-ipn');
 const CoinpaymentsIPNError = require('coinpayments-ipn/lib/error');
 
-let IsValid, error;
+let isValid, error;
 
 try {
   isValid = verify(hmac, ipnSecret, payload);
