@@ -1,22 +1,30 @@
 {
   "name": "coinpayments-ipn",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Coinpayments Instant Payment Notification processor.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^4.1.2",
-    "codecov": "^3.1.0",
-    "eslint": "^5.5.0",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "prettier": "^1.14.2"
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.12.4",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.5",
+    "prettier": "^2.3.1",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
   },
   "scripts": {
-    "test": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/mocha --reporter progress tests/index.js",
-    "lint": "node_modules/eslint/bin/eslint.js lib/",
-    "pretty": "node_modules/prettier/bin-prettier.js lib/** --write",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "build": "rm -rf dist/ && tsc -p tsconfig.build.json",
+    "build:prod": "rm -rf dist/ && tsc -p tsconfig.prod.build.json",
+    "lint": "./node_modules/eslint/bin/eslint.js . --ext .ts --fix",
+    "test": "jest --config ./jest.config.js --coverage --runInBand",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "prepublishOnly": "yarn build:prod"
   },
   "report-coverage": "codecov",
   "repository": {
@@ -28,5 +36,9 @@
   "bugs": {
     "url": "https://github.com/OrahKokos/coinpayments-ipn/issues"
   },
-  "homepage": "https://github.com/OrahKokos/coinpayments-ipn#readme"
+  "homepage": "https://github.com/OrahKokos/coinpayments-ipn#readme",
+  "keywords": [
+    "Coinpayments",
+    "coinpayments"
+  ]
 }

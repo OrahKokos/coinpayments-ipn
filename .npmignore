@@ -3,8 +3,6 @@
 .env
 .env.example
 .eslintignore
-LICENSE
-README.md
-.nyc_output/
 coverage/
-coverage.lcov
+.circleci/
+.devcontainer/
