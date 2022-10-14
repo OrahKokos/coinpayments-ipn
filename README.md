@@ -1,5 +1,7 @@
 # Coinpayments-IPN
 
+[![codecov](https://codecov.io/gh/OrahKokos/coinpayments-ipn/branch/master/graph/badge.svg?token=FZEqgtxIVH)](https://codecov.io/gh/OrahKokos/coinpayments-ipn)
+
 <p align="left">
   <a href="https://travis-ci.com/OrahKokos/coinpayments-ipn">
     <img src="https://travis-ci.com/OrahKokos/coinpayments-ipn.svg?branch=master"
