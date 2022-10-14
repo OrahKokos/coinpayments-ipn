@@ -16,6 +16,8 @@
 
 Module for verifing Coinpaymets Instant Payment notifications.
 
+<a name="content"></a>
+
 ## Content
   - [Installation](#installation)
   - [Usage](#usage)
@@ -76,6 +78,7 @@ if (!result.success) {
 result.data // CoinpaymentsIPN - Verified
 
 ```
+[Back to top](#content)
 <a name="helpers"></a>
 
 ## Helper functions
@@ -98,6 +101,7 @@ if (result.success) {
   }
 }
 ```
+[Back to top](#content)
 <a name="isAdvancedButtonIPN"></a>
 
 #### isAdvancedButtonIPN
@@ -113,6 +117,7 @@ if (result.success) {
 }
 
 ```
+[Back to top](#content)
 <a name="isDonationButtonIPN"></a>
 
 #### isDonationButtonIPN
@@ -127,6 +132,7 @@ if (result.success) {
   }
 }
 ```
+[Back to top](#content)
 <a name="isCartIPN"></a>
 
 #### isCartIPN
@@ -141,6 +147,7 @@ if (result.success) {
   }
 }
 ```
+[Back to top](#content)
 <a name="isDepositIPN"></a>
 
 #### isDepositIPN
@@ -155,6 +162,7 @@ if (result.success) {
   }
 }
 ```
+[Back to top](#content)
 <a name="isWithdrawalIPN"></a>
 
 #### isWithdrawalIPN
@@ -169,7 +177,7 @@ if (result.success) {
   }
 }
 ```
-
+[Back to top](#content)
 <a name="isApiIPN"></a>
 
 #### isApiIPN
@@ -210,6 +218,7 @@ if (result.success) {
 }
 
 ```
+[Back to top](#content)
 <a name="isPaymentSuccessful-withdrawal"></a>
 
 ##### Withdrawal
@@ -228,7 +237,7 @@ if (result.success) {
 }
 
 ```
-
+[Back to top](#content)
 <a name="isPaymentSuccessful-else"></a>
 
 ##### Everything else
@@ -249,4 +258,69 @@ if (result.success) {
 }
 
 ```
+[Back to top](#content)
+<a name='isPaymentPending'></a>
 
+#### isPaymentPending 
+```typescript
+import { isApiIPN, isPaymentPending } from 'coinpayments-ipn'
+
+...
+const result = verifyIPN(merchantIPNSecret)(givenHMAC)(someReceivedPayload)
+if (result.success) {
+  if (isApiIPN(result.data)) {
+    result.data // ApiIPN -> { send_tx?: string, received_amount?: string, received_confirms?: string }
+    if (isPaymentPending(result.data)) {
+      // only when 0 < status < 100 - Standard
+      // only when 0 < status < 2 - Withdrawal
+      result.data // ApiIPN -> { send_tx?: string, received_amount?: string, received_confirms?: string }
+    }
+  }
+}
+
+```
+
+[Back to top](#content)
+<a name='isPaymentUnsuccessful'></a>
+
+#### isPaymentUnsuccessful 
+```typescript
+import { isApiIPN, isPaymentUnsuccessful } from 'coinpayments-ipn'
+
+...
+const result = verifyIPN(merchantIPNSecret)(givenHMAC)(someReceivedPayload)
+if (result.success) {
+  if (isApiIPN(result.data)) {
+    result.data // ApiIPN -> { send_tx?: string, received_amount?: string, received_confirms?: string }
+    if (isPaymentUnsuccessful(result.data)) {
+      // only when status < 0
+      result.data // ApiIPN -> { send_tx?: string, received_amount?: string, received_confirms?: string }
+    }
+  }
+}
+
+```
+
+[Back to top](#content)
+<a name='isPaymentComplete'></a>
+
+#### isPaymentComplete 
+Payment notification has reached some final state.
+`isPaymentComplete = isPaymentUnsuccessful || isPaymentSuccessful`
+
+```typescript
+import { isApiIPN, isPaymentComplete } from 'coinpayments-ipn'
+
+...
+const result = verifyIPN(merchantIPNSecret)(givenHMAC)(someReceivedPayload)
+if (result.success) {
+  if (isApiIPN(result.data)) {
+    result.data // ApiIPN -> { send_tx?: string, received_amount?: string, received_confirms?: string }
+    if (isPaymentComplete(result.data)) {
+      // Check isPaymentUnsuccessful OR isPaymentSuccessful
+    }
+  }
+}
+
+```
+[Back to top](#content)
