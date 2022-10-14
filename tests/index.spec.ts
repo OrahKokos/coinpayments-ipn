@@ -21,6 +21,7 @@ describe('Coinpayments IPN tests', () => {
   describe('isIPNLike', () => {
     const someIPN = createIPN(IPN_TYPES_ENUM.SIMPLE)(PAYMENT_STATUS_ENUM.STANDARD.COMPLETE)
     const faultyInput = Object.values(BASE_IPN_KEYS).map((requiredKey) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { [requiredKey]: omitted, ...rest } = someIPN
       return [requiredKey, rest]
     })
