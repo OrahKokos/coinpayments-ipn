@@ -2,21 +2,30 @@
   "name": "coinpayments-ipn",
   "version": "1.0.0",
   "description": "Coinpayments Instant Payment Notification processor.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "dependencies": {},
   "devDependencies": {
-    "chai": "^4.1.2",
-    "codecov": "^3.1.0",
-    "eslint": "^5.5.0",
-    "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
-    "prettier": "^1.14.2"
+    "@faker-js/faker": "^7.6.0",
+    "@types/jest": "^29.1.2",
+    "@types/node": "^18.8.5",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "faker": "^6.6.6",
+    "jest": "^29.1.2",
+    "prettier": "^2.7.1",
+    "ts-jest": "^29.0.3",
+    "typescript": "^4.8.4"
   },
   "scripts": {
-    "test": "node_modules/nyc/bin/nyc.js --reporter=lcov node_modules/mocha/bin/mocha --reporter progress tests/index.js",
-    "lint": "node_modules/eslint/bin/eslint.js lib/",
-    "pretty": "node_modules/prettier/bin-prettier.js lib/** --write",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+    "build": "rm -rf dist/ && tsc -p tsconfig.json",
+    "build:prod": "rm -rf dist/ && tsc -p tsconfig.prod.json",
+    "test": "jest --config ./jest.config.js --coverage --runInBand",
+    "lint": "./node_modules/eslint/bin/eslint.js . --ext .ts",
+    "lint:fix": "./node_modules/eslint/bin/eslint.js . --ext .ts --fix"
   },
   "report-coverage": "codecov",
   "repository": {
